@@ -1,0 +1,67 @@
+.CardConection {
+    cursor: pointer;
+    width: 350px;
+    height: 350px;
+    border-radius: 10px;
+    background-image: url('../../assets/card.png');
+    -webkit-box-shadow: 2px 6px 10px 3px rgba(224, 224, 224, 1);
+    -moz-box-shadow: 2px 6px 10px 3px rgba(224, 224, 224, 1);
+    box-shadow: 2px 6px 10px 3px rgba(224, 224, 224, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+
+    img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+
+    }
+
+    .cInfo {
+        display: grid;
+        grid-template-columns: 23% 72%;
+        gap: 3%;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .description {
+        width: 100%;
+
+        h4 {
+            text-align: justify;
+
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            -webkit-line-clamp: 5;
+        }
+
+        .cBton {
+            display: flex;
+            width: 100%;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+    }
+
+    &:hover {
+        @media (max-width: 1080px) {
+            margin-top: 0px;
+            transition: none;
+
+        }
+
+        margin-top: -20px;
+        transition: margin-top 0.3s linear;
+    }
+
+
+}

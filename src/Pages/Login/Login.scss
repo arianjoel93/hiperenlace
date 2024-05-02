@@ -1,0 +1,54 @@
+.Login {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../assets/image-login.png');
+    display: grid;
+    place-items: center;
+
+    .cInfoLogin {
+        width: 350px;
+        height: 400px;
+        background-color: #ffffff;
+        border-radius: 5px;
+        -webkit-box-shadow: 1px 5px 7px 1px rgba(176, 176, 176, 1);
+        -moz-box-shadow: 1px 5px 7px 1px rgba(176, 176, 176, 1);
+        box-shadow: 1px 5px 7px 1px rgba(176, 176, 176, 1);
+        padding: 30px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+
+        .logo{
+            display: flex;
+            align-items: center;
+
+            img{
+                width: 70px;
+                height: 35px;
+            }
+            h3{
+                font-size: 18px;
+            }
+        }
+
+        input{
+            height: 40px;
+            width: 100%;
+        }
+    }
+    .p-password {
+        width: 100%;
+    }
+    .cGoogle{
+        border: 1px solid gray;
+        border-radius: 10px;
+        padding: 5px;
+    }
+    .googleButton{
+        border-radius: 50px !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+}

@@ -1,0 +1,107 @@
+:root {
+    --primary: #336666;
+    --fuente-principal: 'Karla', sans-serif;
+    --light: #edf1f2;
+}
+
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+body {
+    background-image: url('../assets/image-login.png');
+    font-family: var(--fuente-principal);
+    line-height: 1.5;
+    // background: white !important;
+    margin: 0 !important;
+    -webkit-font-smoothing: antialiased;
+    transition: 0.2s ease all;
+    background-size: cover;
+    background-attachment: fixed;
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,legend {
+        margin: 0;
+        font-family: 'Karla', sans-serif;
+
+    }
+    p{
+        font-size: 14px;
+    }
+    legend{
+        font-size: 34px;
+    }
+
+    &::-webkit-scrollbar {
+        width: 10px !important;
+        /* Ancho de la barra */
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+        /* Color de fondo de la barra */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 40px;
+    }
+
+    a, strong {
+        text-decoration: none;
+        color: #940757 !important;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.Container {
+    width: min(95%, 128rem) !important;
+    position: relative;
+    margin: 0px auto !important;
+    height: auto;
+    padding: 50px;
+    background-color: white;
+    border-radius: 10px;
+    // padding: 20px 0;    
+}
+.container {
+    width: min(95%, 128rem) !important;
+    position: relative;
+    margin: 0px auto !important;
+    height: auto;
+}
+.p-m{
+    margin: 0px auto !important;
+    padding: 20px 0;
+}
