@@ -1,0 +1,33 @@
+.About{
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+
+    .cAbout{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        fieldset {
+            border-bottom: none;
+            border-left: none;
+            border-right: none;
+            text-align: center;
+            border-top: 1px solid rgb(234, 234, 234);
+    
+            legend {
+                padding: 0 50px;
+                color: black;
+    
+                strong {
+                    color: #940757 !important;
+                    font-size: 34px;
+                }
+    
+                span {
+                    color: #D86A23;
+                }
+            }
+        }
+    }
+}

@@ -4,7 +4,7 @@ import PrimaryButton from "../PrimaryButton/PrimaryButton";
 
 const Header = () => {
   return (
-    <div className="Header">
+    <header className="Header">
       <div className="cHeader container">
         <div className="nameLogo">
           <img src={logo} alt="logo" />
@@ -13,14 +13,13 @@ const Header = () => {
           </strong>
         </div>
         <nav>
-          <a>Inicio</a>
-          <a>Quiénes somos</a>
-          <a>Publica tu negocio</a>
-          <a>Invierte en un negocio</a>
+          <a href="/">Inicio</a>
+          <a href="/quienes-somos">Quiénes somos</a>
+          <a href="/publicar-mi-servicio">Publicar mi servicio</a>
           <PrimaryButton url={"login"} />
         </nav>
       </div>
-    </div>
+    </header>
   );
 };
 

@@ -5,6 +5,8 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import React, { Suspense, lazy } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from "../components/Layout/Layout"
+const About = lazy(() => import('../Pages/About/About'))
+const PublishService = lazy(() => import('../Pages/PublishService/PublishService'))
 const Home = lazy(() => import('../Pages/Home/Home'))
 const Login = lazy(() => import("../Pages/Login/Login"))
 const CreateAccount = lazy(() => import("../Pages/CreateAccount/CreateAccount"))
@@ -27,6 +29,21 @@ const MainRouter = () => {
                                     </Suspense>
                                 }
                             />
+                            <Route
+                                path='/quienes-somos'
+                                element={
+                                    <Suspense>
+                                        <About></About>
+                                    </Suspense>
+                                }
+                            />
+                            <Route path="/publicar-mi-servicio"
+                                element={
+                                    <Suspense>
+                                        <PublishService></PublishService>
+                                    </Suspense>
+                                }
+                            />
                         </>
                     }
                 />
@@ -42,7 +59,7 @@ const MainRouter = () => {
                 <Route path="/crear-cuenta"
                     element={
                         <Suspense>
-                            <CreateAccount/>
+                            <CreateAccount />
                         </Suspense>
                     }
                 />

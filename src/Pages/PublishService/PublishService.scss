@@ -1,0 +1,70 @@
+.PublishService {
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .cPublishService {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        place-items: center;
+        gap: 30px;
+
+
+        .text_pubhish {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+
+            p{
+                font-size: 20px;
+            }
+
+            h1 {
+                font-size: 44px;
+
+                span {
+                    color: #940757;
+                }
+
+                strong {
+                    font-size: 44px;
+                    color: #940757 !important;
+
+                    span {
+                        color: #D86A23;
+                    }
+                }
+
+            }
+        }
+        .cardPublish{
+            width: 400px;
+            height: 450px;
+            background-color: #D86A23;
+            border-radius: 5px;
+            padding: 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            
+            h1{
+                font-size: 22px;
+                margin-bottom: 20px;
+
+            }
+        }
+        .options{
+            display: grid;
+            grid-template-columns: 5% 90%;
+            gap: 5%;
+
+            svg{
+                width: 28px !important;
+                height: 28px !important;
+            }
+        }
+
+    }
+}

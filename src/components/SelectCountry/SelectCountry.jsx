@@ -28,6 +28,7 @@ const SelectCountry = ({ selectedCountry, setSelectedCountry, active }) => {
                 </div>
             );
         }
+        
 
         return <span>{props.placeholder}</span>;
     };
@@ -59,7 +60,7 @@ const SelectCountry = ({ selectedCountry, setSelectedCountry, active }) => {
     return (
         <div className='SelectCountry'>
             <Dropdown name="country" id="country" value={selectedCountry} onChange={(e) => setSelectedCountry(e.value)} options={countries} optionLabel="name" placeholder="Seleccione un país"
-                filter panelFooterTemplate={panelFooterTemplate} valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} className={active && selectedCountry == null ? "w-full md:w-14rem p-invalid" : "w-full md:w-14rem"} />
+                filter panelFooterTemplate={panelFooterTemplate} valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} className="w-full md:w-14rem" />
         </div>
     )
 }

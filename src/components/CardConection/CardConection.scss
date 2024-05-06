@@ -1,74 +1,86 @@
 .CardConection {
     cursor: pointer;
-    width: 350px;
-    height: 400px;
+    width: 100%;
+    height: 250px;
     border-radius: 10px;
-    background-image: url('../../assets/card.png');
     -webkit-box-shadow: 2px 6px 10px 3px rgba(224, 224, 224, 1);
     -moz-box-shadow: 2px 6px 10px 3px rgba(224, 224, 224, 1);
     box-shadow: 2px 6px 10px 3px rgba(224, 224, 224, 1);
     display: flex;
-    flex-direction: column;
     gap: 30px;
-    padding: 20px;
+    position: relative;
+    right: 0;
 
-    img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        object-fit: cover;
-
+    &:hover{
+        right: -10px;
+        transition: right 0.2s ease-out;
     }
 
-    .cInfo {
-        display: grid;
-        grid-template-columns: 23% 72%;
-        gap: 3%;
+
+    img {
+        width: 250px;
+        height: 100%;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+
     }
 
     .info {
         display: flex;
         flex-direction: column;
         gap: 10px;
-    }
+        padding: 20px;
 
-    .description {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-
-        p{
-            font-size: 12px;
-        }
-
-        h4 {
-            text-align: justify;
-
+        h1 {
+            font-size: 24px;
             display: -webkit-box;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            -webkit-line-clamp: 4;
+            -webkit-line-clamp: 2;
         }
 
-        .cBton {
+        .description {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            -webkit-line-clamp: 3;
+        }
+
+        .dimensions {
             display: flex;
+            gap: 10px;
+
+        }
+        .btn{
             width: 100%;
-            justify-content: flex-end;
-            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cScore{
+            display: flex;
+            align-items: end;
+            gap: 10px;
+
+            p{
+                font-weight: 600;
+            }
+        }
+        
+        .score{
+            width: 50px;
+            height: 30px;
+            border-radius: 5px;
+            background-color: #D86A23;
+            display: grid;
+            place-items: center;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
         }
     }
 
-    &:hover {
-        @media (max-width: 1080px) {
-            margin-top: 0px;
-            transition: none;
-
-        }
-
-        margin-top: -20px;
-        transition: margin-top 0.3s linear;
-    }
 
 
 }

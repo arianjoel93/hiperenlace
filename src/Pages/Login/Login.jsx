@@ -31,9 +31,14 @@ const Login = () => {
 
     return (
         <div className="Login">
+            <a href="/" className="nameLogo">
+                <img src={logo} alt="logo" />
+                <strong>
+                    <span>Hiper</span>enlace
+                </strong>
+            </a>
             <div className="cInfoLogin">
                 <div className="cGoogle">
-
                     <GoogleLogin
                         className={"googleButton"}
                         clientId={clientID}
@@ -47,10 +52,10 @@ const Login = () => {
                 {/* <div className={user ? "profile": "hidden"}>
                     <img src={user.imageUrl} alt="user"/>
                 </div> */}
-                <div className="logo">
+                {/* <div className="logo">
                     <img src={logo} />
                     <h3>Hiperenlace</h3>
-                </div>
+                </div> */}
                 <InputText placeholder="Usuario" />
                 <Password feedback={false} tabIndex={1} toggleMask placeholder="Contraseña" />
                 <SecundaryButton text={"Entrar"} />
