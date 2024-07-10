@@ -1,17 +1,29 @@
 
 services:
 
-  mongo-db:
-    image: mongo:6.0.6
-    container_name: mongodb
+  mysql-db:
+    image: mysql:8.1
+    container_name: mysql
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: mongo-user
-      MONGO_INITDB_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: shop-db
     volumes:
-      - ./mongo:/data/db
+      - ./mysql:/var/lib/mysql
     ports:
-      - 27017:27017
+      - 3307:3306
+
+  # mongo-db:
+  #   image: mongo:6.0.6
+  #   container_name: mongodb
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: mongo-user
+  #     MONGO_INITDB_ROOT_PASSWORD: 123456
+  #   volumes:
+  #     - ./mongo:/data/db
+  #   ports:
+  #     - 27017:27017
 
   # postgres-db:
   #   image: postgres:15.3

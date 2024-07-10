@@ -11,22 +11,23 @@ export class UserEntity {
     public email: string,
     public emailValidated: Boolean,
     public password: string,
-    public role: string[],
+    public role?: string[],
+    public phone?: number,
     public img?: string,
   ) { }
 
 
   public static fromObject(object: GenericObject) {
 
-    const { _id, id, name, email, emailValidated, password, role, img } = object;
+    const { id, name, email, emailValidated, password, role, img } = object;
 
-    if (!_id && !id) throw CustomError.badRequest('Missing id');
+    if (!id) throw CustomError.badRequest('Missing id');
     if (!name) throw CustomError.badRequest('Missing name');
     if (!email) throw CustomError.badRequest('Missing email');
     if (emailValidated === undefined) throw CustomError.badRequest('Missing emailValidated');
     if (!password) throw CustomError.badRequest('Missing password');
     if (!role) throw CustomError.badRequest('Missing role');
 
-    return new UserEntity(_id || id, name, email, emailValidated, password, role, img);
+    return new UserEntity(id, name, email, emailValidated, password, role, img);
   }
 }

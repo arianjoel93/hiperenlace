@@ -1,5 +1,6 @@
 import express, { Router } from 'express';
 import path from 'path';
+import { mySqlDatabase } from '../data';
 
 interface Options {
   port: number;
@@ -23,30 +24,46 @@ export class Server {
     this.routes = routes;
   }
 
-  
-  
+  async dbConnection() {
+    try {
+
+      await mySqlDatabase.authenticate();
+      // await mySqlDatabase.sync();
+      console.log('Connection has been established successfully.');
+
+    } catch (error) {
+      console.log("🚀 ~ Server ~ dbConnection ~ error:", error)
+      
+        throw new Error("Unknown error occurred");
+
+    }
+  }
+
   async start() {
-    
+
+
+    await this.dbConnection();
+
 
     //* Middlewares
-    this.app.use( express.json() ); // raw
-    this.app.use( express.urlencoded({ extended: true }) ); // x-www-form-urlencoded
+    this.app.use(express.json()); // raw
+    this.app.use(express.urlencoded({ extended: true })); // x-www-form-urlencoded
 
     //* Public Folder
-    this.app.use( express.static( this.publicPath ) );
+    this.app.use(express.static(this.publicPath));
 
     //* Routes
-    this.app.use( this.routes );
+    this.app.use(this.routes);
 
     //* SPA /^\/(?!api).*/  <== Únicamente si no empieza con la palabra api
     this.app.get('*', (req, res) => {
-      const indexPath = path.join( __dirname + `../../../${ this.publicPath }/index.html` );
+      const indexPath = path.join(__dirname + `../../../${this.publicPath}/index.html`);
       res.sendFile(indexPath);
     });
-    
+
 
     this.serverListener = this.app.listen(this.port, () => {
-      console.log(`Server running on port ${ this.port }`);
+      console.log(`Server running on port ${this.port}`);
     });
 
   }

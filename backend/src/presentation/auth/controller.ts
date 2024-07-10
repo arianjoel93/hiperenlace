@@ -27,24 +27,24 @@ export class AuthController {
 }
 
 
-  registerUser = (req: Request, res: Response) => {
-    const [error, registerDto] = RegisterUserDto.create(req.body);
-    if(error) return res.status(400).json({ error });
+  // registerUser = (req: Request, res: Response) => {
+  //   const [error, registerDto] = RegisterUserDto.create(req.body);
+  //   if(error) return res.status(400).json({ error });
 
-    this.authService.registerUser(registerDto!)
-      .then(result => res.json( result ))
-      .catch(error => this.handleError(error, res));
+  //   this.authService.registerUser(registerDto!)
+  //     .then(result => res.json( result ))
+  //     .catch(error => this.handleError(error, res));
 
     
-  }
-  loginUser = (req: Request, res: Response) => {
-    const [error, loginUserDto] = LoginUserDto.create(req.body);
-    if(error) return res.status(400).json({ error });
+  // }
+  // loginUser = (req: Request, res: Response) => {
+  //   const [error, loginUserDto] = LoginUserDto.create(req.body);
+  //   if(error) return res.status(400).json({ error });
 
-    this.authService.loginUser(loginUserDto!)
-      .then(result => res.json( result ))
-      .catch(error => this.handleError(error, res));
-  }
+  //   this.authService.loginUser(loginUserDto!)
+  //     .then(result => res.json( result ))
+  //     .catch(error => this.handleError(error, res));
+  // }
   
   // validateEmail = (req: Request, res: Response) => {
   //   const [error, loginUserDto] = ValidateEmailDto.create(req.body);

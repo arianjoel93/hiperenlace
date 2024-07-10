@@ -1,5 +1,4 @@
 import { regularExps } from "../../../config";
-import { CustomError } from "../../errors/custom.error";
 
 
 interface GenericObject {
@@ -29,6 +28,7 @@ export class RegisterUserDto {
 
 
     return [undefined, new RegisterUserDto(name, email, password)];
-
   }
+
 }
+

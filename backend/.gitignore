@@ -1,13 +1,19 @@
+# Ignore List
 
-
-
-
-
+# environment variables
 .env
 
+# volumes to ignore
 /mongo
+/mysql
 /postgres
+
+# node modules
 node_modules/
+
+# build
 dist/
 build/
+
+# tests
 coverage/
