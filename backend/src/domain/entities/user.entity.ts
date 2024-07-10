@@ -11,9 +11,9 @@ export class UserEntity {
     public email: string,
     public emailValidated: Boolean,
     public password: string,
-    public role?: string[],
+    // public role?: string[],
     public phone?: number,
-    public img?: string,
+    // public img?: string,
   ) { }
 
 
@@ -26,8 +26,8 @@ export class UserEntity {
     if (!email) throw CustomError.badRequest('Missing email');
     if (emailValidated === undefined) throw CustomError.badRequest('Missing emailValidated');
     if (!password) throw CustomError.badRequest('Missing password');
-    if (!role) throw CustomError.badRequest('Missing role');
+    // if (!role) throw CustomError.badRequest('Missing role');
 
-    return new UserEntity(id, name, email, emailValidated, password, role, img);
+    return new UserEntity(id, name, email, emailValidated, password);
   }
 }

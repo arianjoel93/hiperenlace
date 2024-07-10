@@ -1,2 +1,2 @@
 export * from './mysql/mysql.connector';
-// export * from './sequelize/models/user';
+export * from './mysql/models/user';

@@ -1,7 +1,6 @@
 import { bcryptAdapter, jwtAdapter } from "../../config";
-// import { User } from "../../data";
 import { CustomError, LoginUserDto, RegisterUserDto, UserEntity } from "../../domain";
-
+import { User } from "../../data";
 
 /**
  * si se quise cambiar de base de datos es solo aqui en los servicios donde se haceb los cambios
@@ -15,70 +14,64 @@ export class AuthService {
   // Dependency injection ?
   constructor() { }
 
-  // public async registerUser(registerUserDto: RegisterUserDto) {
+  public async registerUser(registerUserDto: RegisterUserDto) {
 
-  //   const existsUser = await User.findOne({ 
-  //     where: { email: registerUserDto.email }
-  //   });
-  //   if (existsUser) throw CustomError.badRequest('Email already exists');
+    const existsUser = await User.findOne({ 
+      where: { email: registerUserDto.email }
+    });
+    if (existsUser) throw CustomError.badRequest('Email already exists');
 
-  //   try {
-  //     // create user
-  //     // TODO: CHECK The use of userObject
-  //     const userObject = {
-  //       name: registerUserDto.name,
-  //       email: registerUserDto.email,
-  //       password: registerUserDto.password,
-  //     };
-  //     const user  = await User.create(userObject);
-  //     console.log("🚀 ~ AuthService ~ registerUser ~ user:", user)
+    try {
+      // create user
+      const user  = await User.create(registerUserDto);
+      console.log("🚀 ~ AuthService ~ registerUser ~ user:", user)
 
-  //     // hash password
-  //     user.password = bcryptAdapter.hash(registerUserDto.password);
+      // hash password
+      user.password = bcryptAdapter.hash(registerUserDto.password);
 
-  //     // save user in database
-  //     await user.save();
+      // save user in database
+      await user.save();
 
-  //     // create JWT token
+      // create JWT token
 
-  //     // email confirmation
+      // email confirmation
 
 
-  //     const { password, ...userEntity } = UserEntity.fromObject(user);
+      const { emailValidated, password, ...userEntity } = UserEntity.fromObject(user);
 
 
 
-  //     return { user: { ...userEntity }, token: 'JWT token' };
+      return { user: { ...userEntity }, token: 'JWT token' };
 
-  //   } catch (error) {
-  //     throw CustomError.internalServer(`${error}`);
-  //   }
+    } catch (error) {
+      throw CustomError.internalServer(`${error}`);
+    }
+
+  }
+
+
+  // public async loginUser(loginUserDto: LoginUserDto) {
+
+  //   // check if user exists
+
+  //   const user = await User.findOne({ email: loginUserDto.email });
+  //   if (!user) throw CustomError.badRequest('Email does not exist'); // should be: Email and Password do not match
+
+  //   // check if password is correct
+  //   const isPasswordCorrect = bcryptAdapter.compare(loginUserDto.password, user.password);
+  //   if (!isPasswordCorrect) throw CustomError.badRequest('Password is incorrect'); // should be: Email and Password do not match
+
+
+  //   // return user
+  //   const { password, ...userEntity } = UserEntity.fromObject(user);
+
+  //   const token = await jwtAdapter.generateToken({ id: user.id });
+  //   if (!token) throw CustomError.internalServer('Could not generate token');
+
+  //   return {
+  //     user: { ...userEntity },
+  //     token: token
+  //   };
 
   // }
-
-
-//   public async loginUser(loginUserDto: LoginUserDto) {
-
-//     // check if user exists
-
-//     const user = await UserModel.findOne({ email: loginUserDto.email });
-//     if (!user) throw CustomError.badRequest('Email does not exist'); // should be: Email and Password do not match
-
-//     // check if password is correct
-//     const isPasswordCorrect = bcryptAdapter.compare(loginUserDto.password, user.password);
-//     if (!isPasswordCorrect) throw CustomError.badRequest('Password is incorrect'); // should be: Email and Password do not match
-
-
-//     // return user
-//     const { password, ...userEntity } = UserEntity.fromObject(user);
-
-//     const token = await jwtAdapter.generateToken({ id: user.id });
-//     if (!token) throw CustomError.internalServer('Could not generate token');
-
-//     return {
-//       user: { ...userEntity },
-//       token: token
-//     };
-
-//   }
 } 
