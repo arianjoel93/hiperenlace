@@ -3,9 +3,9 @@ import { envs } from './envs';
 
 const JWT_SEED = envs.JWT_SEED;
 
-export const jwtAdapter = {
+export class JwtAdapter {
 
-  generateToken(payload: any, expiresIn: string = '3h') {
+  static async generateToken(payload: any, expiresIn: string = '3h') {
 
     return new Promise((resolve) => {
 
@@ -17,11 +17,18 @@ export const jwtAdapter = {
       });
 
     })
-  },
+  }
 
-  validateToken(token: string) {
+  static async validateToken(token: string) {
 
-    throw new Error('Method not implemented.');
-    return;
+    return new Promise((resolve) => {
+
+      jwt.verify(token, JWT_SEED, (err, decoded) => {
+        if (err) resolve(null)  // invalid token  
+
+        resolve(decoded)
+      })
+    }
+    )
   }
 }
