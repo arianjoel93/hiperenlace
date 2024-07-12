@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import { mySqlDatabase } from "../mysql.connector";
+import { Category } from "./category";
 
 interface ProductAttributes {
   id: string;
@@ -41,8 +42,8 @@ Product.init({
     allowNull: false
   },
   category_id: {
-    type: DataTypes.STRING,
-    allowNull: false
+    type: DataTypes.UUID,
+    allowNull: false,
   },
   image_url: {
     type: DataTypes.STRING,
@@ -68,4 +69,11 @@ Product.init({
   // createdAt: false,
   // updatedAt: false
 })
+
+Product.belongsTo(Category, { foreignKey: 'category_id' });
+
+Category.hasMany(Product, {
+  foreignKey: 'category_id',
+  sourceKey: 'id'
+});
 

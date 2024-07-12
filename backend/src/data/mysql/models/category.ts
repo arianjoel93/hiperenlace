@@ -41,12 +41,9 @@ Category.init({
   // updatedAt: false
 });
 
-Category.hasMany(Product, {
-  foreignKey: {
-    name: 'category_id',
-    allowNull: false
-  },
-  sourceKey: 'id'
-});
+// Category.hasMany(Product, {
+//   foreignKey: 'category_id',
+//   sourceKey: 'id'
+// });
 
-Product.belongsTo(Category, { foreignKey: 'category_id' });
+// Product.belongsTo(Category, { foreignKey: 'category_id' });

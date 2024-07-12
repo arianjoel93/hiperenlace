@@ -15,7 +15,6 @@ export class Cart extends Model<CartAttributes, CartInput> implements CartAttrib
   declare id: string;
   declare user_id: string;
 
- 
 }
 
 
