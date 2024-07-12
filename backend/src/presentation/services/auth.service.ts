@@ -6,9 +6,9 @@ import { EmailService } from './email.service';
 /**
  * Si se quise cambiar de base de datos es solo aqui en los servicios donde se hace los cambios
  * o implementar el patron repositorio
+ * Aqui se implementan los queries de Sequelize u otras bases de datos
  */
 
-// aqui implementar los queris de ssequelize
 
 export class AuthService {
 
@@ -34,7 +34,7 @@ export class AuthService {
       // save user in database
       await user.save();
 
-      // TODO:email confirmation  --> HAY QUE INYECTAR LA DEPENDENCIA DE emailServices
+      // send email confirmation to user whit a token and a confirmation link
       await this.sendEmailValidationLink(user.email)
 
 

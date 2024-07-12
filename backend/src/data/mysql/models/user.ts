@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import { mySqlDatabase } from "../mysql.connector";
+import { Cart } from "./cart";
 
 interface UserAttributes {
   id: string;
@@ -68,3 +69,15 @@ User.init({
   // createdAt: false,
   // updatedAt: false
 })
+
+User.hasOne(Cart, {
+  foreignKey: {
+    name: 'user_id',
+    allowNull: false,
+  },
+  sourceKey: 'id',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE'
+
+});
+Cart.belongsTo(User, { foreignKey: 'user_id' })

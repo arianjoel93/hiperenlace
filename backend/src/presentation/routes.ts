@@ -11,8 +11,10 @@ export class AppRoutes {
 
     const router = Router();
     
-    // Definir las rutas
+    // Rutas de autenticación de los usuarios
     router.use('/api/auth', AuthRoutes.routes);
+
+    
 
 
 
