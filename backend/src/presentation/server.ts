@@ -28,7 +28,7 @@ export class Server {
     try {
 
       await mySqlDatabase.authenticate();
-      await mySqlDatabase.sync( { force: true } );
+      await mySqlDatabase.sync( { alter: true } );
       console.log('Connection has been established successfully.');
 
     } catch (error) {

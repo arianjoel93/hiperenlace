@@ -33,7 +33,11 @@ UserAddress.init({
   },
   user_id: {
     type: DataTypes.UUID,
-    allowNull: false
+    allowNull: false,
+    references: {
+      model: 'users', // nombre de la tabla a la que se hace referencia
+      key: 'id', // columna de la tabla a la que se hace referencia
+    },
   },
   address_line_1: {
     type: DataTypes.STRING,
@@ -41,7 +45,7 @@ UserAddress.init({
   },
   address_line_2: {
     type: DataTypes.STRING,
-    defaultValue: false
+    allowNull: false
   },
   post_code: {
     type: DataTypes.STRING,
@@ -54,7 +58,7 @@ UserAddress.init({
 
 }, {
   sequelize: mySqlDatabase,
-  tableName: 'user_addresss',
+  tableName: 'user_address',
   timestamps: false,
   // freezeTableName: true,
   // underscored: true,
@@ -64,14 +68,9 @@ UserAddress.init({
   // updatedAt: false
 })
 
-UserAddress.hasOne(User, {
-  foreignKey: {
-    name: 'user_id',
-    allowNull: false,
-  },
+User.hasOne(UserAddress, {
+  foreignKey: 'user_id',
   sourceKey: 'id',
-  onDelete: 'CASCADE',
-  onUpdate: 'CASCADE'
 
 });
-User.belongsTo(UserAddress, { foreignKey: 'user_id' })
+UserAddress.belongsTo(User, { foreignKey: 'user_id' }); // Relación inversa en UserAddress

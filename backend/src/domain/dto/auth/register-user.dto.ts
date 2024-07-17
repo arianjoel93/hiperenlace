@@ -15,12 +15,13 @@ export class RegisterUserDto {
     public readonly name: string,
     public readonly email: string,
     public readonly password: string,
-    public readonly phone?: string
+    public readonly phone?: string,
+    public readonly role?: string[]
   ) { }
 
   public static create(object: GenericObject): [string?, RegisterUserDto?] {
 
-    const { name, email, password, phone } = object;
+    const { name, email, password, phone, role } = object;
     if (!name) return ['Missing name'];
     if (!email) return ['Missing email'];
     if (regularExps.email.test(email) === false) return ['Invalid email'];
@@ -28,7 +29,7 @@ export class RegisterUserDto {
     if (password.length < 6) return ['Password must be at least 6 characters'];
 
 
-    return [undefined, new RegisterUserDto(name, email, password, phone)];
+    return [undefined, new RegisterUserDto(name, email, password, phone, role)];
   }
 
 }

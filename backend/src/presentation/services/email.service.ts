@@ -43,7 +43,7 @@ export class EmailService {
 
 
     try {
-      // si esta en false no envia el email
+      // TODO si esta en false (!this.postToProvider) no envia el email DE VERIFICACION  al correo de usuario
       if (!this.postToProvider) return true;
 
       const sentInformation = await this.transporter.sendMail({

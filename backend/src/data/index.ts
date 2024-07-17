@@ -3,3 +3,4 @@ export * from './mysql/models/category';
 export * from './mysql/models/product';
 export * from './mysql/models/user';
 export * from './mysql/mysql.connector';
+export * from './mysql/models/user_address';

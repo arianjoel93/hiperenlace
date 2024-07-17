@@ -1,4 +1,4 @@
-import { DataTypes, Model, Optional } from "sequelize";
+import { DataTypes, Model, Optional, STRING } from "sequelize";
 import { mySqlDatabase } from "../mysql.connector";
 import { Cart } from "./cart";
 
@@ -10,10 +10,11 @@ interface UserAttributes {
   password: string;
   phone?: string;
   isActive?: boolean;
+  role?: string[];
 }
 
 
-export interface UserInput extends Optional<UserAttributes, 'phone' | 'isActive' | 'id' | 'emailValidated'> { };
+export interface UserInput extends Optional<UserAttributes, 'phone' | 'isActive' | 'id' | 'emailValidated' | 'role'> { };
 export interface UserOutput extends Required<UserAttributes> { };
 
 export class User extends Model<UserAttributes, UserInput> implements UserAttributes {
@@ -24,6 +25,7 @@ export class User extends Model<UserAttributes, UserInput> implements UserAttrib
   declare password: string;
   declare phone?: string;
   declare isActive?: boolean;
+  declare role?: string[]
 }
 
 
@@ -57,6 +59,11 @@ User.init({
     type: DataTypes.BOOLEAN,
     defaultValue: false
   },
+  role: {
+    type: DataTypes.ENUM('admin', 'user'),
+    allowNull: false,
+    defaultValue: 'user'
+  }
 
 }, {
   sequelize: mySqlDatabase,

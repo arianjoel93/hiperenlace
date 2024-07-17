@@ -26,7 +26,8 @@ Cart.init({
   },
   user_id: {
     type: DataTypes.UUID,
-    allowNull: false
+    allowNull: false,
+    defaultValue: DataTypes.UUIDV4
   }
 }, {
   sequelize: mySqlDatabase,

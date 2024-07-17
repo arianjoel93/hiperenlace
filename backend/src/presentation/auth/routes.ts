@@ -26,7 +26,6 @@ export class AuthRoutes {
 
     router.post('/register', controller.registerUser);
 
-    // TODO Implementar VALIDATE EMAIL
     router.get('/validate-email/:token', controller.validateEmail);
 
     // router.use('/forgot-password', /*AuthController */ );

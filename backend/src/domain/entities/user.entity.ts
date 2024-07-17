@@ -11,7 +11,7 @@ export class UserEntity {
     public email: string,
     public emailValidated: Boolean,
     public password: string,
-    // public role?: string[],
+    public role?: string[],
     public phone?: number,
     // public img?: string,
   ) { }
@@ -19,7 +19,7 @@ export class UserEntity {
 
   public static fromObject(object: GenericObject) {
 
-    const { id, name, email, emailValidated, password, role, img } = object;
+    const { id, name, email, emailValidated, password, role } = object;
 
     if (!id) throw CustomError.badRequest('Missing id');
     if (!name) throw CustomError.badRequest('Missing name');
