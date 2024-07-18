@@ -1,6 +1,6 @@
 
 import { Category, Product } from "../../data";
-import { CreateProductsDto, CustomError, PaginationDto } from "../../domain";
+import { CreateProductsDto, CustomError, PaginationDto, ProductEntity } from "../../domain";
 
 
 // TODO: Analizar como se agregan variaciones del mismo producto
@@ -21,11 +21,11 @@ export class ProductService {
       if (!category) throw CustomError.badRequest('Category not found');
 
       createProductDto.category_id = category.id;
-      
+
       const product = await Product.create(createProductDto!);
       console.log("🚀 ~ ProductService ~ createProduct ~ product:", product)
-      
-      
+
+
 
       // save product
       await product.save();
@@ -41,37 +41,44 @@ export class ProductService {
     } catch (error) {
       console.log("🚀 ~ ProductService ~ createProduct ~ error:", error)
       throw CustomError.internalServer('Error creating product');
-    }``
+    }
   }
 
 
   public async getProducts(paginationDto: PaginationDto) {
 
-    const { page , limit} = paginationDto;
+    const { page, limit } = paginationDto;
 
     try {
 
+      // const { emailValidated, password, id, ...userEntity } = ProductEntity.fromObject(user);
+
+
       const [total, products] = await Promise.all([
         Product.count(),
-        Product.findAll({     // offset y limit son las paginaciones en sequelize
+        Product.findAll({  
+          
+          // attributes especifica los campos que queremos retornar
+          attributes: ['name', 'description', 'image_url'],
+
+          // offset y limit son las paginaciones en sequelize
           offset: (page - 1) * limit,
           limit: limit
           // TODO: populate category
         })
       ])
 
-      
-        
+
+
       return {
         total: total,
         page,
         limit,
         next: `/api/products?page=${page + 1}&limit=${limit}`,
-        prev: (page -1 > 0) ? `/api/products?page=${page - 1}&limit=${limit}`: null,
-
+        prev: (page - 1 > 0) ? `/api/products?page=${page - 1}&limit=${limit}` : null,
         products: products
       }
-      
+
     } catch (error) {
       console.log("🚀 ~ ProductService ~ Products ~ error:", error)
       throw CustomError.internalServer('Error getting products');

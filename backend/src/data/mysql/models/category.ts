@@ -32,7 +32,7 @@ Category.init({
   name: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true
+    unique: 'idx_unique_category'
   },
   availability: {
     type: DataTypes.BOOLEAN,
@@ -42,6 +42,13 @@ Category.init({
   sequelize: mySqlDatabase,
   tableName: 'category',
   timestamps: false,
+  indexes: [
+    {
+      unique: true,
+      fields: ['name'],
+      name: 'idx_unique_category'
+    }
+  ]
   // freezeTableName: true,
   // underscored: true,
   // paranoid: true,
@@ -49,10 +56,3 @@ Category.init({
   // createdAt: false,
   // updatedAt: false
 });
-
-// Category.hasMany(Product, {
-//   foreignKey: 'category_id',
-//   sourceKey: 'id'
-// });
-
-// Product.belongsTo(Category, { foreignKey: 'category_id' });

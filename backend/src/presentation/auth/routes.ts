@@ -27,7 +27,9 @@ export class AuthRoutes {
     router.post('/register', controller.registerUser);
 
     router.get('/validate-email/:token', controller.validateEmail);
-
+    
+    router.get('/get-users', controller.getUsers);
+    
     // router.use('/forgot-password', /*AuthController */ );
     // router.use('logout', /*AuthController */ );
 

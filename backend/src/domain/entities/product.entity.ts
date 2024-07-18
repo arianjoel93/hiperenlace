@@ -10,10 +10,10 @@ export class ProductEntity {
     public name: string,
     public description: string,
     public category_id: string,
-    public cart_id: string,
     public img_url: string,
     public price: number,
     public availability: boolean,
+    public cart_id?: string,
   ) { }
 
   static fromObject(object: GenericObject) {
@@ -23,11 +23,11 @@ export class ProductEntity {
     if (!id) throw CustomError.badRequest('Missing id');
     if (!name) throw CustomError.badRequest('Missing name');
     if (!description) throw CustomError.badRequest('Missing description');
-    if (!category_id) throw CustomError.badRequest('Missing category_id');
-    if (!cart_id) throw CustomError.badRequest('Missing cart_id');
-    if (!img_url) throw CustomError.badRequest('Missing img_url');
+    // if (!category_id) throw CustomError.badRequest('Missing category_id');
+    // if (!cart_id) throw CustomError.badRequest('Missing cart_id');
+    // if (!img_url) throw CustomError.badRequest('Missing img_url');
     if (!price) throw CustomError.badRequest('Missing price');
-    if (!availability) throw CustomError.badRequest('Missing availability');
+    // if (!availability) throw CustomError.badRequest('Missing availability');
 
 
 

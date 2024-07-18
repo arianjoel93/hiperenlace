@@ -53,6 +53,15 @@ export class AuthController {
 
   }
 
+  getUsers = (req: Request, res: Response) => {
+
+    this.authService.getAllUsers()
+
+      .then(users => res.json(users))
+      .catch(error => this.handleError(error, res));
+  }
+
+
 }
 
 

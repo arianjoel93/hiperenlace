@@ -15,6 +15,8 @@ export class AppRoutes {
     const router = Router();
     
     // Rutas de autenticación de los usuarios
+    // TODO: Implementar validaciones de rutas donde solo un admin pueda crear categorias
+    // COMO LA DE INMUNOSALUD
     router.use('/api/auth', AuthRoutes.routes);
 
     router.use('/api/categories', CategoryRoutes.routes);

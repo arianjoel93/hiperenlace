@@ -123,5 +123,10 @@ export class AuthService {
     return true;
   }
 
+  public async getAllUsers() {
+    const users = await User.findAll();
+    return users;
+  }
+
 
 } 
